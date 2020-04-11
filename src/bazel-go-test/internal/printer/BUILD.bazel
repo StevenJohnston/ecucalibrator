@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["printer.go"],
+    importpath = "github.com/StevenJohnston/ecucalibrator/src/bazel-go-test/internal/printer",
+    visibility = ["//src/bazel-go-test:__subpackages__"],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = ["printer_test.go"],
+    embed = [":go_default_library"],
+    deps = ["@com_github_stretchr_testify//assert:go_default_library"],
+)
