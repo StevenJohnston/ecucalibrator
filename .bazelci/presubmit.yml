@@ -1,0 +1,14 @@
+---
+tasks:
+  ecucalibrator-build-linux:
+    name: "ecucalibrator"
+    platform: ubuntu1804
+    working_directory: ecucalibrator
+    build_targets:
+    - "..."
+  ecucalibrator-test-linux:
+    name: "ecucalibrator"
+    platform: ubuntu1804
+    working_directory: ecucalibrator
+    test_targets:
+    - "..."
