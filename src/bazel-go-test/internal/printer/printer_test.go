@@ -10,5 +10,5 @@ import (
 func TestPrinter(t *testing.T) {
 	str := "test string"
 	printed := printer.Println(str)
-	assert.Equal(t, "well this is wrong", printed)
+	assert.Equal(t, str, printed)
 }
