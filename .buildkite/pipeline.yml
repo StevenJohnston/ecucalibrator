@@ -1,3 +1,7 @@
 steps:
   - label: "Example Test"
     command: echo "Hello!"
+  - label: "build"
+    command: bazel build ...
+  - label: "test"
+    command: bazel test ...

@@ -2,23 +2,13 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: buildkite
+  namespace: ops
   labels:
     name: buildkite
 spec:
-  volumes:
-  - name: buildkite-github-ssh-volume
-    secret:
-      secretName: buildkite-github-ssh
-      defaultMode: 0600
-  - name: environment-hooks-volume
-    configMap:
-      name: add-env-key-hook
-      items:
-        - key: ADD_ENV_KEY_HOOK
-          path: environment
   containers:
     - name: buildkite
-      image: buildkite/agent:3
+      image: gcr.io/ecucalibrator/bazel-buildkite:tag1
       env:
         - name: BUILDKITE_AGENT_TOKEN
           valueFrom:
@@ -31,3 +21,19 @@ spec:
         mountPath: "/buildkite-secrets"
       - name: environment-hooks-volume
         mountPath: "/buildkite/hooks"
+      - name: dockersock
+        mountPath: "/var/run/docker.sock"
+  volumes:
+  - name: buildkite-github-ssh-volume
+    secret:
+      secretName: buildkite-github-ssh
+      defaultMode: 0600
+  - name: environment-hooks-volume
+    configMap:
+      name: add-env-key-hook
+      items:
+        - key: ADD_ENV_KEY_HOOK
+          path: environment
+  - name: dockersock
+    hostPath:
+      path: /var/run/docker.sock
