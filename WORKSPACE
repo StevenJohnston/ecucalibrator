@@ -85,24 +85,7 @@ load(
 
 container_repositories()
 
-# This is NOT needed when going through the language lang_image
-# "repositories" function(s).
-load("@io_bazel_rules_docker//repositories:deps.bzl", container_deps = "deps")
 
-container_deps()
-
-load(
-    "@io_bazel_rules_docker//container:container.bzl",
-    "container_pull",
-)
-
-container_pull(
-  name = "java_base",
-  registry = "gcr.io",
-  repository = "distroless/java",
-  # 'tag' is also supported, but digest is encouraged for reproducibility.
-  digest = "sha256:deadbeef",
-)
 # /docker
 
 # go image
