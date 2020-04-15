@@ -12,11 +12,15 @@ go_library(
 go_binary(
     name = "cmd",
     embed = [":go_default_library"],
+    goarch = "amd64",
+    goos = "linux",
+    importpath = "github.com/StevenJohnston/ecucalibrator/src/bazel-go-test/cmd",
     visibility = ["//visibility:public"],
 )
 
 go_image(
     name = "go_image",
-    srcs = ["main.go"],
+    embed = [":go_default_library"],
     importpath = "github.com/StevenJohnston/ecucalibrator/src/bazel-go-test/cmd",
+    visibility = ["//visibility:public"],
 )

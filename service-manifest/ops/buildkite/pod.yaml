@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
     - name: buildkite
-      image: gcr.io/ecucalibrator/bazel-buildkite:tag1
+      image: gcr.io/ecucalibrator/bazel-buildkite:python23
       env:
         - name: BUILDKITE_AGENT_TOKEN
           valueFrom:
