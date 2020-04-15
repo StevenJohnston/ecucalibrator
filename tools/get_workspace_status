@@ -1,0 +1,6 @@
+#!/bin/bash
+
+GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+GIT_SHA=$(git rev-parse HEAD)
+
+CONTAINER_REGISTRY=gcr.io/ecucalibrator/bazel-buildkite
