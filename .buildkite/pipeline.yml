@@ -2,7 +2,7 @@ steps:
   - label: "Example Test"
     command: echo "Hello!"
   - label: "Gazelle"
-    command: bazel run //:gazelle --verbose_failures -- update-repos -from_file=go.mod --verbose_failures
+    command: bazel run //:gazelle -- update-repos -from_file=go.mod
   - label: "login to GCR"
     command: "cat /root/gcr/config.json | docker login -u _json_key --password-stdin https://gcr.io"
   - label: "build"
