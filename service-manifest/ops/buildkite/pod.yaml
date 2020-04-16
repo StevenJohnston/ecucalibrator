@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
     - name: buildkite
-      image: gcr.io/ecucalibrator/bazel-buildkite:tag1
+      image: gcr.io/ecucalibrator/bazel-buildkite:python23
       env:
         - name: BUILDKITE_AGENT_TOKEN
           valueFrom:
@@ -21,12 +21,18 @@ spec:
         mountPath: "/buildkite-secrets"
       - name: environment-hooks-volume
         mountPath: "/buildkite/hooks"
+      - name: gcr-push-service-account-volume
+        mountPath: /root/gcr/
       - name: dockersock
         mountPath: "/var/run/docker.sock"
   volumes:
   - name: buildkite-github-ssh-volume
     secret:
       secretName: buildkite-github-ssh
+      defaultMode: 0600
+  - name: gcr-push-service-account-volume
+    secret:
+      secretName: gcr-push-service-account
       defaultMode: 0600
   - name: environment-hooks-volume
     configMap:

@@ -1,4 +1,24 @@
 load("@bazel_gazelle//:def.bzl", "gazelle")
+load("@io_bazel_rules_docker//container:container.bzl", "container_bundle")
+load("@io_bazel_rules_docker//contrib:push-all.bzl", "container_push")
 
 # gazelle:prefix github.com/StevenJohnston/ecucalibrator
 gazelle(name = "gazelle")
+
+container_bundle(
+    name = "service-bundle",
+    images = {
+        "{CONTAINER_REGISTRY}/bazel-go-test:latest": "//src/bazel-go-test/cmd:go_image",
+        "{CONTAINER_REGISTRY}/bazel-go-test:{GIT_SHA}": "//src/bazel-go-test/cmd:go_image",
+    },
+)
+
+container_push(
+    name = "publish",
+    format = "Docker",
+    bundle = "service-bundle",
+    # registry = "gcr.io",
+    # repository = "ecucalibrator/bazel-buildkite",
+    # image = ":go_image",
+    # tag = "latest",
+)
