@@ -9,7 +9,7 @@ container_bundle(
     name = "service-bundle",
     images = {
         "{CONTAINER_REGISTRY}/bazel-go-test:latest": "//src/bazel-go-test/cmd:go_image",
-        "{CONTAINER_REGISTRY}/bazel-go-test:GIT_SHA": "//src/bazel-go-test/cmd:go_image",
+        "{CONTAINER_REGISTRY}/bazel-go-test:{GIT_SHA}": "//src/bazel-go-test/cmd:go_image",
     },
 )
 

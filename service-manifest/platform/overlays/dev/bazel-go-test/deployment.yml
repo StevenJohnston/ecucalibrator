@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bazel-go-test-deployment
+  namespace: dev
+spec:
+  template:
+    spec:
+      containers:
+      - name: bazel-go-test
+        image: gcr.io/ecucalibrator/bazel-buildkite/bazel-go-test:GIT_SHA
