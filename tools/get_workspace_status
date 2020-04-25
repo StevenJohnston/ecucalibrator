@@ -4,5 +4,5 @@ GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 GIT_SHA=$(git rev-parse HEAD)
 echo GIT_SHA $GIT_SHA
 
-CONTAINER_REGISTRY=gcr.io/ecucalibrator/bazel-buildkite
+CONTAINER_REGISTRY=gcr.io/ecucalibrator
 echo CONTAINER_REGISTRY $CONTAINER_REGISTRY
