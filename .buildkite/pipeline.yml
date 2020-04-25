@@ -4,12 +4,17 @@ steps:
   - label: "Gazelle"
     command: bazel run //:gazelle -- update-repos -from_file=go.mod
   - label: "login to GCR"
-    command: "cat /root/gcr/config.json | docker login -u _json_key --password-stdin https://gcr.io"
+    command: "cat /root/gcr/docker.json | docker login -u _json_key --password-stdin https://gcr.io"
   - label: "build"
     command: bazel build --platforms=@io_bazel_rules_go//go/toolchain:linux_amd64 ...
   - label: "test"
     command: bazel test ...
-  # - label: "deploy test"
-  #   command: bazel run src/bazel-go-test/cmd:publish
-  - label: "deploy all test"
+  - label: "deploy all"
     command: bazel run //:publish
+  - label: "build frontend"
+    commands: 
+      - cd src/frontend
+      - npm i
+      - npm run-script build
+      - docker build . -t gcr.io/ecucalibrator/frontend:${BUILDKITE_COMMIT}
+      - docker push gcr.io/ecucalibrator/frontend:${BUILDKITE_COMMIT}
