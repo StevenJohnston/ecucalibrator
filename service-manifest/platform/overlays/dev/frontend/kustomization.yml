@@ -1,0 +1,5 @@
+bases:
+- ../../../bases/frontend
+patchesStrategicMerge:
+- deployment.yml
+- service.yml

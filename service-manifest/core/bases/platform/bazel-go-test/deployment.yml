@@ -16,4 +16,4 @@ spec:
     spec:
       containers:
       - name: bazel-go-test
-        image: gcr.io/ecucalibrator/bazel-go-test:latest
+        image: gcr.io/ecucalibrator/bazel-buildkite/bazel-go-test:latest
