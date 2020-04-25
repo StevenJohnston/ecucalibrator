@@ -7,3 +7,7 @@
 - create a secret for buildkite to push images to gcr
   <!-- `kubectl --namespace=ops create secret docker-registry gcr-pusher-key --docker-server=https://gcr.io --docker-username=_json_key --docker-password="$(cat ${GCR_PUSHER_JSON})" --docker-email=steven@stevenjohnston.ca` -->
   `kubectl --namespace=ops create secret generic gcr-push-service-account --from-file=docker.json=${GCR_PUSH_SERVICE_ACCOUNT}`
+- Setup kubernetes to use gcr
+  `kubectl --namespace=ops create secret docker-registry gcr-pusher-key --docker-server=https://gcr.io --docker-username=_json_key --docker-password="$(cat ${GCR_PUSHER_JSON})" --docker-email=steven@stevenjohnston.ca`
+  `kubectl --namespace=ops patch serviceaccount default \
+          -p '{"imagePullSecrets": [{"name": "gcr-pusher-key"}]}'`
