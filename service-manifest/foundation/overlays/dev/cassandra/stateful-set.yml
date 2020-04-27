@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: cassandra
+  namespace: dev
+spec:
+  serviceName: cassandra
+  replicas: 2
+  template:
+    spec:
+      containers:
+      - name: cassandra
+        resources:
+          limits:
+            cpu: "250m"
+            memory: 1Gi
+          requests:
+            cpu: "250m"
+            memory: 1Gi 
+        env:
+          - name: CASSANDRA_SEEDS
+            value: "cassandra-0.cassandra.dev.svc.cluster.local"

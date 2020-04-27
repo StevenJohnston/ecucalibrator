@@ -1,4 +1,0 @@
-bases:
-- ../../../bases/bazel-go-test
-patchesStrategicMerge:
-- deployment.yml
