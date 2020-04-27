@@ -1,3 +1,5 @@
 resources:
 - deployment.yml
 - service.yml
+- ingress.yml
+- ratelimit.yml

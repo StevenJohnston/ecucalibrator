@@ -4,9 +4,9 @@ metadata:
   name: frontend
   namespace: dev
 spec:
-  replicas: 2
+  replicas: 1
   template:
     spec:
       containers:
         - name: frontend
-          image: gcr.io/ecucalibrator/frontend:581f55d7a574de439908a6e2ef62b128b4630709
+          image: gcr.io/ecucalibrator/frontend:fd273f4fe16333fc60ab13b18d82367eca9579fe
