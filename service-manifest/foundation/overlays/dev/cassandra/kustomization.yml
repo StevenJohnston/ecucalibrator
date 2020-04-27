@@ -1,0 +1,6 @@
+bases:
+- ../../../bases/cassandra
+patchesStrategicMerge:
+- service.yml
+- stateful-set.yml
+- storage-class.yml

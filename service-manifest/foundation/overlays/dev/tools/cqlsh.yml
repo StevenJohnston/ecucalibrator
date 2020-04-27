@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cqlsh
+  namespace: dev
+spec:
+  containers:
+  - name: cqlsh
+    image: cassandra
+    

@@ -1,0 +1,4 @@
+resources:
+  - service.yml
+  - stateful-set.yml
+  - storage-class.yml

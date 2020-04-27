@@ -1,0 +1,29 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: cqlsh
+spec:
+  selector:
+    matchLabels:
+      app: cqlsh
+  template:
+    metadata:
+      labels:
+        app: cqlsh
+    spec:
+      containers:
+        - name: cqlsh
+          image: nuvo/docker-cqlsh
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cqlsh
+  labels:
+    app: cqlsh
+spec:
+  clusterIP: None
+  ports:
+  - port: 9042
+  selector:
+    app: cqlsh
